@@ -81,7 +81,7 @@ class BasketballPlayer(Player):
             raise TypeError('games has not been set')
         return self._games['points'].max()
 
-    def assist_max(self):
+    def assists_max(self):
         """ 
         Return game with highest assist by player
         """
