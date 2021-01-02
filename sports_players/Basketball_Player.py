@@ -42,6 +42,8 @@ class BasketballPlayer(Player):
                 raise ValueError("Missing 'rebounds' column")
             elif 'assist' not in value.columns: # if there isn't a assist column
                 raise ValueError("Missing 'assist' column")
+            else:
+                self._games = value
         elif value is None:
             self._games = None
         else:
@@ -51,7 +53,7 @@ class BasketballPlayer(Player):
         """
         Return points per game average
         """
-        pass
+        return self._games['points'].mean()
     
     def apg(self):
         """ 
