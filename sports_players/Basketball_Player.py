@@ -40,8 +40,8 @@ class BasketballPlayer(Player):
                 raise ValueError("Missing 'points' column")
             elif 'rebounds' not in value.columns: # if there isn't a rebounds column
                 raise ValueError("Missing 'rebounds' column")
-            elif 'assist' not in value.columns: # if there isn't a assist column
-                raise ValueError("Missing 'assist' column")
+            elif 'assists' not in value.columns: # if there isn't a assist column
+                raise ValueError("Missing 'assists' column")
             else:
                 self._games = value
         elif value is None:
@@ -53,40 +53,65 @@ class BasketballPlayer(Player):
         """
         Return points per game average
         """
+        if self._games is None:
+            raise TypeError('games has not been set')
         return self._games['points'].mean()
     
     def apg(self):
         """ 
         Return assist per game average 
         """
-        pass
+        if self._games is None:
+            raise TypeError('games has not been set')
+        return self._games['assists'].mean()
 
     def rpg(self):
         """
         Return rebounds per game average
         """
-        pass
+        if self._games is None:
+            raise TypeError('games has not been set')
+        return self._games['rebounds'].mean()
 
     def points_max(self):
         """ 
         Return game with highest points sby player
         """
-        pass
+        if self._games is None:
+            raise TypeError('games has not been set')
+        return self._games['points'].max()
 
     def assist_max(self):
         """ 
         Return game with highest assist by player
         """
-        pass
+        if self._games is None:
+            raise TypeError('games has not been set')
+        return self._games['assists'].max()
 
     def rebounds_max(self):
         """ 
         Return game with highest rebounds by player
         """
-        pass
+        if self._games is None:
+            raise TypeError('games has not been set')
+        return self._games['rebounds'].max()
 
-    def avg_through(self, number_games):
+    def avg_through(self, start, end):
         """ 
         Return averages by player through number of games
+        in the form of a pandas Series
         """
-        pass
+        if self._games is None:
+            raise TypeError('games has not been set')
+        if start is None or end is None:
+            raise ValueError('start and end must be provided')
+        if not isinstance(start, int):
+            raise TypeError('start must be an integer')
+        if not isinstance(end, int):
+            raise TypeError('end must be an interger')
+        if start < 0 or end > len(self._games):
+            raise  ValueError('Index out of range')
+        if start >= end:
+            raise ValueError('start must be less than end')
+        return self._games.loc[start:end].mean()
