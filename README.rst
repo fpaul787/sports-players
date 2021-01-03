@@ -24,5 +24,27 @@ pip install sports_players
     print(player.ppg()) # returns player points per game
     print(player.apg()) # returns player assists per game
 
+Instantiaion
+a player can be instantiated with either their full_name, first_name, or last_name
+
+.. code:: python
+
+    BasketballPlayer(full_name="Lebron James", first_name="Lebron", last_name="James")
+
+Properties:
+full_name: full name of player. None if not specified.
+first_name: first name of player. None if not specified
+last_name: last name of player. None if not specified
+games: All player games. None if not specified
+
+Methods:
+player.ppg(): average of points per game for player
+player.apg(): average of assists per game of player
+player.rbg(): average of rebounds per game of player
+player.points_max(): maximum points a player has gotten in a game
+player.rebounds_max(): maximum rebounds a player has gotten in a game 
+player.assists_max(): maximum assists a player has gotten in a game
+player.avg_through(start, finish): player average from a beginning point to an end point
+
 ``sports-players`` requires the pandas library and is installed
 when you install the package.
