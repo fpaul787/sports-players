@@ -9,7 +9,7 @@ with open(path.join(this_directory, "README.rst"), encoding="utf-8") as f:
 
 setup(
     name="sports-players",
-    version="1.2",
+    version="1.2.1",
     description="Sports Players Objects",
     packages=["sports_players"],
     install_requires=[
