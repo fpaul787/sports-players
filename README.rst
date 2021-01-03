@@ -23,3 +23,6 @@ pip install sports_players
 
     print(player.ppg()) # returns player points per game
     print(player.apg()) # returns player assists per game
+
+``sports-players`` requires the pandas library and is installed
+when you install the package.
