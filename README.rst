@@ -18,8 +18,8 @@ pip install sports_players
     player = BasketballPlayer(full_name="Lebron James")
     data = {'points': [20, 10, 10, 10], 'rebounds': [4, 3, 2, 10], 'assists': [2, 4, 7, 2]}
 
-    games = pd.DataFrame(data=self.data)
-    player.games = self.games
+    games = pd.DataFrame(data=data)
+    player.games = games
 
     print(player.ppg()) # returns player points per game
     print(player.apg()) # returns player assists per game
